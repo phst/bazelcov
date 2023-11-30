@@ -42,6 +42,12 @@ func main() {
 	if len(targets) == 0 {
 		targets = []string{"//..."}
 	}
+	// Support running with “bazel run”.
+	if dir := os.Getenv("BUILD_WORKING_DIRECTORY"); dir != "" {
+		if err := os.Chdir(dir); err != nil {
+			log.Fatal(err)
+		}
+	}
 	bazel, err := exec.LookPath(bazel)
 	if err != nil {
 		log.Fatal(err)
