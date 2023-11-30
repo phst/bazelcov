@@ -12,10 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@gazelle//:def.bzl", "gazelle")
 load("@rules_go//go:def.bzl", "go_binary")
-
-gazelle(name = "gazelle")
 
 go_binary(
     name = "bazelcov",
