@@ -1,4 +1,4 @@
-// Copyright 2023 Philipp Stephani
+// Copyright 2023, 2024 Philipp Stephani
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -156,7 +156,6 @@ func genHTML(workspace, prog string, report []byte, output string) error {
 		return fmt.Errorf("can’t write report: %s", err)
 	}
 	defer temp.Close()
-	defer os.Remove(temp.Name())
 
 	if _, err := temp.Write(report); err != nil {
 		return fmt.Errorf("can’t write report: %s", err)
@@ -180,5 +179,7 @@ func genHTML(workspace, prog string, report []byte, output string) error {
 	if err := cmd.Run(); err != nil {
 		return fmt.Errorf("can’t write report: %s", err)
 	}
+	// Remove temporary file only on success to make debugging easier.
+	os.Remove(temp.Name())
 	return nil
 }
