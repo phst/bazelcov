@@ -20,9 +20,13 @@ SHELL = /bin/sh
 BAZEL = bazel
 BAZELFLAGS =
 BUILDIFIER = buildifier
+GO = go
+STATICCHECK = staticcheck
 
 all:
 	$(BAZEL) build $(BAZELFLAGS) -- //...
 
 check: all
 	$(BUILDIFIER) -mode=check -lint=warn -warnings=all -r -- .
+	$(GO) vet ./...
+	$(STATICCHECK) ./...
