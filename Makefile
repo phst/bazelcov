@@ -23,4 +23,6 @@ BUILDIFIER = buildifier
 
 all:
 	$(BAZEL) build $(BAZELFLAGS) -- //...
+
+check: all
 	$(BUILDIFIER) -mode=check -lint=warn -warnings=all -r -- .
