@@ -28,7 +28,7 @@ jobs:
       - name: Install Staticcheck
         shell: bash
         run: |
-          sudo apt install go-staticcheck
+          sudo apt-get install go-staticcheck
       - name: Set up Bazel
         uses: bazel-contrib/setup-bazel@0.12.1
         with:
