@@ -28,7 +28,7 @@ jobs:
       - name: Install Staticcheck
         shell: bash
         run: |
-          sudo apt-get install go-staticcheck
+          go install honnef.co/go/tools/cmd/staticcheck@latest
       - name: Set up Bazel
         uses: bazel-contrib/setup-bazel@0.12.1
         with:
@@ -48,4 +48,4 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
-          make check BAZEL=bazelisk STATICCHECK=go-staticcheck
+          make check BAZEL=bazelisk
