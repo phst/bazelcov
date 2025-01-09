@@ -19,7 +19,6 @@ SHELL = /bin/sh
 
 BAZEL = bazel
 BAZELFLAGS =
-BUILDIFIER = buildifier
 GO = go
 STATICCHECK = staticcheck
 
