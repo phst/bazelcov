@@ -48,4 +48,4 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
-          make check BAZEL=bazelisk
+          make check BAZEL=bazelisk STATICCHECK=go-staticcheck
