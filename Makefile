@@ -27,6 +27,6 @@ all:
 	$(BAZEL) build $(BAZELFLAGS) -- //...
 
 check: all
+	$(ADDLICENSE) -check -- "$${PWD}"
 	$(BUILDIFIER) -mode=check -lint=warn -warnings=all -r -- "$${PWD}"
 	$(STATICCHECK) ./...
-	$(ADDLICENSE) -check -- "$${PWD}"
