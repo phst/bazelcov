@@ -25,6 +25,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Install Buildifier
+        shell: bash
+        run: |
+          go install github.com/bazelbuild/buildtools/buildifier@latest
       - name: Set up Bazel
         uses: bazel-contrib/setup-bazel@0.12.1
         with:
