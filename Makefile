@@ -28,6 +28,6 @@ all:
 check: all
 	$(BAZEL) run $(BAZELFLAGS) -- \
 	  @buildifier_prebuilt//:buildifier \
-	  -mode=check -lint=warn -warnings=all -r -- .
+	  -mode=check -lint=warn -warnings=all -r -- "$${PWD}"
 	$(GO) vet ./...
 	$(STATICCHECK) ./...
