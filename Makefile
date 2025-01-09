@@ -19,15 +19,16 @@ SHELL = /bin/sh
 
 BAZEL = bazel
 BAZELFLAGS =
+BUILDIFIER = $(BAZEL) run $(BAZELFLAGS) -- @buildifier
 GO = go
 STATICCHECK = staticcheck
+ADDLICENSE = $(BAZEL) run $(BAZELFLAGS) -- @addlicense
 
 all:
 	$(BAZEL) build $(BAZELFLAGS) -- //...
 
 check: all
-	$(BAZEL) run $(BAZELFLAGS) -- \
-	  @buildifier -mode=check -lint=warn -warnings=all -r -- "$${PWD}"
+	$(BUILDIFIER) -mode=check -lint=warn -warnings=all -r -- "$${PWD}"
 	$(GO) vet ./...
 	$(STATICCHECK) ./...
-	$(BAZEL) run $(BAZELFLAGS) -- @addlicense -check -- "$${PWD}"
+	$(ADDLICENSE) -check -- "$${PWD}"
