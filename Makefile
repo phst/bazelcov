@@ -27,6 +27,8 @@ all:
 	$(BAZEL) build $(BAZELFLAGS) -- //...
 
 check: all
-	$(BUILDIFIER) -mode=check -lint=warn -warnings=all -r -- .
+	$(BAZEL) run $(BAZELFLAGS) -- \
+	  @buildifier_prebuilt//:buildifier \
+	  -mode=check -lint=warn -warnings=all -r -- .
 	$(GO) vet ./...
 	$(STATICCHECK) ./...
