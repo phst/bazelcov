@@ -28,6 +28,7 @@ nogo(
 
 buildifier_test(
     name = "buildifier_test",
+    timeout = "short",
     lint_mode = "warn",
     lint_warnings = ["all"],
     no_sandbox = True,
