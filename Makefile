@@ -20,12 +20,10 @@ SHELL = /bin/sh
 BAZEL = bazel
 BAZELFLAGS =
 STATICCHECK = staticcheck
-ADDLICENSE = $(BAZEL) run $(BAZELFLAGS) -- @addlicense
 
 all:
 	$(BAZEL) build $(BAZELFLAGS) -- //...
 
 check: all
-	$(ADDLICENSE) -check -- "$${PWD}"
 	$(BAZEL) test $(BAZELFLAGS) -- //...
 	$(STATICCHECK) ./...

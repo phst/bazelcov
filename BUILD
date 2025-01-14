@@ -13,6 +13,7 @@
 # limitations under the License.
 
 load("@buildifier//:rules.bzl", "buildifier_test")
+load("@phst_license_test//:def.bzl", "license_test")
 load("@rules_go//go:def.bzl", "TOOLS_NOGO", "go_binary", "nogo")
 
 go_binary(
@@ -33,4 +34,10 @@ buildifier_test(
     lint_warnings = ["all"],
     no_sandbox = True,
     workspace = "WORKSPACE",
+)
+
+license_test(
+    name = "license_test",
+    timeout = "short",
+    marker = "MODULE.bazel",
 )
