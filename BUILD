@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+load("@buildifier//:rules.bzl", "buildifier_test")
 load("@rules_go//go:def.bzl", "TOOLS_NOGO", "go_binary", "nogo")
 
 go_binary(
@@ -23,4 +24,12 @@ nogo(
     name = "nogo",
     visibility = ["//visibility:public"],
     deps = TOOLS_NOGO,
+)
+
+buildifier_test(
+    name = "buildifier_test",
+    lint_mode = "warn",
+    lint_warnings = ["all"],
+    no_sandbox = True,
+    workspace = "WORKSPACE",
 )

@@ -19,7 +19,6 @@ SHELL = /bin/sh
 
 BAZEL = bazel
 BAZELFLAGS =
-BUILDIFIER = $(BAZEL) run $(BAZELFLAGS) -- @buildifier
 STATICCHECK = staticcheck
 ADDLICENSE = $(BAZEL) run $(BAZELFLAGS) -- @addlicense
 
@@ -28,5 +27,4 @@ all:
 
 check: all
 	$(ADDLICENSE) -check -- "$${PWD}"
-	$(BUILDIFIER) -mode=check -lint=warn -warnings=all -r -- "$${PWD}"
 	$(STATICCHECK) ./...
