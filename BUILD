@@ -12,32 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@buildifier//:rules.bzl", "buildifier_test")
-load("@phst_license_test//:def.bzl", "license_test")
-load("@rules_go//go:def.bzl", "TOOLS_NOGO", "go_binary", "nogo")
+load("@rules_go//go:def.bzl", "go_binary")
 
 go_binary(
     name = "bazelcov",
     srcs = ["main.go"],
 )
 
-nogo(
-    name = "nogo",
-    visibility = ["//visibility:public"],
-    deps = TOOLS_NOGO,
-)
-
-buildifier_test(
-    name = "buildifier_test",
-    timeout = "short",
-    lint_mode = "warn",
-    lint_warnings = ["all"],
-    no_sandbox = True,
-    workspace = "WORKSPACE",
-)
-
-license_test(
-    name = "license_test",
-    timeout = "short",
-    marker = "MODULE.bazel",
+exports_files(
+    [
+        # keep sorted
+        "MODULE.bazel",
+        "WORKSPACE",
+    ],
+    visibility = ["//dev:__pkg__"],
 )

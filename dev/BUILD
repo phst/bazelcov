@@ -12,18 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-module(name = "phst_bazelcov")
+load("@buildifier//:rules.bzl", "buildifier_test")
+load("@phst_license_test//:def.bzl", "license_test")
+load("@rules_go//go:def.bzl", "TOOLS_NOGO", "nogo")
 
-bazel_dep(name = "rules_go", version = "0.52.0")
-
-go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk", dev_dependency = True)
-go_sdk.nogo(nogo = "//dev:nogo")
-
-bazel_dep(name = "phst_license_test", version = "0", dev_dependency = True)
-git_override(
-    module_name = "phst_license_test",
-    commit = "b3d167fbeb29c43a1dd72ed588baa6472d56cdee",
-    remote = "https://github.com/phst/license_test.git",
+nogo(
+    name = "nogo",
+    visibility = ["//visibility:public"],
+    deps = TOOLS_NOGO,
 )
 
-bazel_dep(name = "buildifier_prebuilt", version = "8.0.0", dev_dependency = True, repo_name = "buildifier")
+buildifier_test(
+    name = "buildifier_test",
+    timeout = "short",
+    lint_mode = "warn",
+    lint_warnings = ["all"],
+    no_sandbox = True,
+    workspace = "//:WORKSPACE",
+)
+
+license_test(
+    name = "license_test",
+    timeout = "short",
+    marker = "//:MODULE.bazel",
+)
