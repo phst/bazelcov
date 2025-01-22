@@ -13,6 +13,7 @@
 # limitations under the License.
 
 load("@buildifier//:rules.bzl", "buildifier_test")
+load("@gazelle//:def.bzl", "gazelle", "gazelle_test")
 load("@phst_license_test//:def.bzl", "license_test")
 load("@rules_go//go:def.bzl", "TOOLS_NOGO", "nogo")
 
@@ -35,4 +36,11 @@ license_test(
     name = "license_test",
     timeout = "short",
     marker = "//:MODULE.bazel",
+)
+
+gazelle(name = "gazelle")
+
+gazelle_test(
+    name = "gazelle_test",
+    workspace = "//:WORKSPACE",
 )
