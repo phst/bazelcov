@@ -42,5 +42,6 @@ gazelle(name = "gazelle")
 
 gazelle_test(
     name = "gazelle_test",
+    timeout = "short",
     workspace = "//:WORKSPACE",
 )
