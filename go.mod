@@ -14,7 +14,7 @@
 
 module github.com/phst/bazelcov
 
-go 1.23
+go 1.25
 
 tool honnef.co/go/tools/cmd/staticcheck
 
