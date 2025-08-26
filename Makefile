@@ -19,7 +19,8 @@ SHELL = /bin/sh
 
 BAZEL = bazel
 BAZELFLAGS =
-STATICCHECK = staticcheck
+GO = $(BAZEL) run -- @rules_go//go
+STATICCHECK = $(GO) tool staticcheck
 
 all:
 	$(BAZEL) build $(BAZELFLAGS) -- //...
