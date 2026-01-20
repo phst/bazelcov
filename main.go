@@ -1,4 +1,4 @@
-// Copyright 2023, 2024 Philipp Stephani
+// Copyright 2023, 2024, 2026 Philipp Stephani
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -129,7 +129,7 @@ func collectCoverage(prog string, targets []string) (string, error) {
 	return string(matches[0][1]), nil
 }
 
-var logRegexp = regexp.MustCompile(`(?m)^INFO: LCOV coverage report is located at (/.+\.dat)$`)
+var logRegexp = regexp.MustCompile(`(?m)^INFO: LCOV coverage report is located at (/.+/_coverage_report\.dat)$`)
 
 func munge(report []byte, workspace string) []byte {
 	// coverage.py occasionally writes branch coverage data for line 0,
