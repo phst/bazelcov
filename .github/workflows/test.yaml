@@ -1,4 +1,4 @@
-# Copyright 2025 Philipp Stephani
+# Copyright 2025, 2026 Philipp Stephani
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -45,10 +45,6 @@ jobs:
             test --test_output=errors
           disk-cache: true
           repository-cache: true
-      - name: Install Staticcheck
-        shell: bash
-        run: |
-          go install honnef.co/go/tools/cmd/staticcheck@latest
       - name: Run tests
         shell: bash
         run: |
