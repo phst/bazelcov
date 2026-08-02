@@ -20,7 +20,7 @@ SHELL = /bin/sh
 
 BAZEL = bazel
 BAZELFLAGS =
-GO = $(BAZEL) run -- @rules_go//go
+GO = $(BAZEL) run $(BAZELFLAGS) -- @rules_go//go
 STATICCHECK = $(GO) tool staticcheck
 
 all:
