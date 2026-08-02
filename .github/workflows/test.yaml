@@ -43,6 +43,7 @@ jobs:
             build --nostamp
             build --experimental_repository_cache_hardlinks
             test --test_output=errors
+            run --noomit_run_args
           disk-cache: true
           repository-cache: true
       - name: Run tests
