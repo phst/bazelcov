@@ -1,4 +1,4 @@
-# Copyright 2023, 2025 Philipp Stephani
+# Copyright 2023, 2025, 2026 Philipp Stephani
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ bazel_dep(name = "rules_go", version = "0.62.0")
 go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk", dev_dependency = True)
 go_sdk.nogo(nogo = "//dev:nogo")
 
-bazel_dep(name = "phst_license_test", version = "0", dev_dependency = True)
+bazel_dep(name = "license_test", version = "0", dev_dependency = True)
 git_override(
-    module_name = "phst_license_test",
+    module_name = "license_test",
     commit = "4c0df1852d7c6276f57edef9246c1dc563ccf0ec",
     remote = "https://github.com/phst/license_test.git",
 )
