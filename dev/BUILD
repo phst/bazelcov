@@ -1,4 +1,4 @@
-# Copyright 2023, 2025 Philipp Stephani
+# Copyright 2023, 2025, 2026 Philipp Stephani
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 
 load("@buildifier//:rules.bzl", "buildifier_test")
 load("@gazelle//:def.bzl", "gazelle", "gazelle_test")
-load("@phst_license_test//:def.bzl", "license_test")
+load("@license_test//:def.bzl", "license_test")
 load("@rules_go//go:def.bzl", "TOOLS_NOGO", "nogo")
 
 nogo(
