@@ -21,8 +21,6 @@ tool (
 	honnef.co/go/tools/cmd/staticcheck
 )
 
-require honnef.co/go/tools v0.7.0 // indirect
-
 require (
 	github.com/BurntSushi/toml v1.4.1-0.20240526193622-a339e1f7089c // indirect
 	github.com/bmatcuk/doublestar/v4 v4.0.2 // indirect
@@ -31,4 +29,5 @@ require (
 	golang.org/x/mod v0.31.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
 	golang.org/x/tools v0.40.1-0.20260108161641-ca281cf95054 // indirect
+	honnef.co/go/tools v0.7.0 // indirect
 )
