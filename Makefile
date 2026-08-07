@@ -22,10 +22,12 @@ BAZEL = bazel
 BAZELFLAGS =
 GO = $(BAZEL) run $(BAZELFLAGS) -- @rules_go//go
 STATICCHECK = $(GO) tool staticcheck
+ADDLICENSE = $(BAZEL) run $(BAZELFLAGS) -- @addlicense
 
 all:
 	$(BAZEL) build $(BAZELFLAGS) -- //...
 
 check: all
+	$(ADDLICENSE) -check -- "$${PWD}"
 	$(BAZEL) test $(BAZELFLAGS) -- //...
 	$(STATICCHECK) ./...
