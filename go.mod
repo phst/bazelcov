@@ -14,7 +14,7 @@
 
 module github.com/phst/bazelcov
 
-go 1.26.0
+go 1.26.7
 
 tool (
 	github.com/google/addlicense
