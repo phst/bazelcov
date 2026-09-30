@@ -14,6 +14,7 @@
 
 .POSIX:
 .PHONY: all check
+.PHONY: MODULE.bazel.lock
 .SUFFIXES:
 
 SHELL = /bin/sh
@@ -24,10 +25,13 @@ GO = $(BAZEL) run $(BAZELFLAGS) -- @rules_go//go
 STATICCHECK = $(GO) tool staticcheck
 ADDLICENSE = $(GO) tool addlicense
 
-all:
+all: MODULE.bazel.lock
 	$(BAZEL) build $(BAZELFLAGS) -- //...
 
 check: all
 	$(ADDLICENSE) -check -- .
 	$(BAZEL) test $(BAZELFLAGS) -- //...
 	$(STATICCHECK) ./...
+
+MODULE.bazel.lock:
+	$(BAZEL) mod graph > /dev/null
