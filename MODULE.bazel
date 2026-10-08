@@ -23,5 +23,6 @@ bazel_dep(name = "buildifier_prebuilt", version = "10.1.0", dev_dependency = Tru
 bazel_dep(name = "gazelle", version = "0.54.0", dev_dependency = True)
 
 go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps", dev_dependency = True)
+go_deps.config(check_direct_dependencies = "error")
 go_deps.from_file(go_mod = "//:go.mod")
 use_repo(go_deps, "co_honnef_go_tools", "com_github_google_addlicense")
